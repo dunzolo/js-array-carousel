@@ -39,21 +39,41 @@ const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 next.addEventListener('click', function(){
-    items[itemActive].classList.remove('active');
-    circles[itemActive].classList.remove('active');
-    itemActive++;
-    items[itemActive].classList.add('active');
-    circles[itemActive].classList.add('active');
 
-
+    if(itemActive == imagesArray.length - 1)
+    {
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active')
+        itemActive = 0;
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+    }
+    else{
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        itemActive++;
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+    }
 });
 
 prev.addEventListener('click', function(){
-    items[itemActive].classList.remove('active');
-    circles[itemActive].classList.remove('active');
-    itemActive--;
-    items[itemActive].classList.add('active');
-    circles[itemActive].classList.add('active');
+
+    if(itemActive == 0)
+    {
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active')
+        itemActive = imagesArray.length - 1;
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+    }
+    else{
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        itemActive--;
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+    }
 })
 
 
