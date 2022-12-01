@@ -20,60 +20,55 @@ for(let i = 0; i < imagesArray.length; i++){
 const itemsSlider = document.querySelector('.item-slider');
 itemsSlider.innerHTML += itemsContent;
 
-//Prendiamo la prima immagine dell'array e la rendiamo attiva
 
-//const items = document.querySelector('.item'); //ALTERNATIVA
+//Prendiamo la prima immagine dell'array e la rendiamo attiva
 
 const items = document.getElementsByClassName('item');
 let itemActive = 0;
 
 items[itemActive].classList.add('active');
 
+const items_left = document.querySelector('.item-left');
+items_left.innerHTML = `<img src="./img/${imagesArray[itemActive]}">`
+
 //rendo attivo anche il primo cerchio di navigazione
-
-const circles = document.getElementsByClassName('circle');
-
-circles[itemActive].classList.add('active');
 
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 next.addEventListener('click', function(){
 
-    if(itemActive == imagesArray.length - 1)
+    if(itemActive == 0)
     {
         items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active')
-        itemActive = 0;
+        itemActive = imagesArray.length - 1;
         items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
     }
     else{
         items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-        itemActive++;
+        itemActive--;
         items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
     }
+
+    items_left.innerHTML = `<img src="./img/${imagesArray[itemActive]}">`;
 });
 
 prev.addEventListener('click', function(){
 
-    if(itemActive == 0)
+    if(itemActive == imagesArray.length - 1)
     {
         items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active')
-        itemActive = imagesArray.length - 1;
+        itemActive = 0;
         items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
     }
     else{
         items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-        itemActive--;
+        itemActive++;
         items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
     }
+
+    items_left.innerHTML = `<img src="./img/${imagesArray[itemActive]}">`;
+
 })
 
 
